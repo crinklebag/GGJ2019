@@ -82,6 +82,6 @@ public class DefaultEntity : Entity
 
     public void SwapSprites()
     {
-        _sprite.flipX = !_sprite.flipX;
+        _sprite.flipX = InputManager.PlayerInput.CurrentInput.x > 0;
     }
 }
