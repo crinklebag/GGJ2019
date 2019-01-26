@@ -13,9 +13,11 @@ public class RoomController : MonoBehaviour
     public enum RoomType { LIVING_ROOM = 0, KITCHEN, BEDROOM };
 
     [SerializeField] List<GameObject> waypoints = new List<GameObject>();
-    [SerializeField] GameObject roomLight;
+    [SerializeField] Light roomLight;
     [SerializeField] GameObject roomTrigger;
     [SerializeField] RoomType roomType;
+
+    int maxLightIntensity = 2;
 
     void Start()
     {
@@ -25,15 +27,23 @@ public class RoomController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyUp(KeyCode.Space)){
+            ToggleLight();
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
         
     }
 
-    void TurnOnLights() {
-
+    void ToggleLight() {
+        if (roomLight.intensity == 0) {
+            // Turn on the light
+            roomLight.intensity = 2;
+        } else {
+            // Turn off the light 
+            roomLight.intensity = 0;
+        }
     }
 
     public RoomType GetRoomType(){
