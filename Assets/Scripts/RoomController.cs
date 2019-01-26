@@ -17,7 +17,9 @@ public class RoomController : MonoBehaviour
     [SerializeField] GameObject roomTrigger;
     [SerializeField] RoomType roomType;
 
-    int maxLightIntensity = 2;
+    [SerializeField] int maxLightIntensity = 4;
+
+    private int occupantCounter = 0;
 
     void Start()
     {
@@ -27,19 +29,30 @@ public class RoomController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space)){
-            ToggleLight();
+        if (occupantCounter <= 0) {
+            ToggleLight(false);
+        }
+        else {
+            ToggleLight(true);
         }
     }
 
     private void OnTriggerEnter(Collider other) {
-        
+        if (other.tag == "NPC") {
+            occupantCounter++;
+        }
     }
 
-    void ToggleLight() {
-        if (roomLight.intensity == 0) {
+    private void OnTriggerExit(Collider other) {
+        if (other.tag == "NPC") {
+            occupantCounter--;
+        }
+    }
+
+    void ToggleLight(bool isOn) {
+        if (isOn) {
             // Turn on the light
-            roomLight.intensity = 2;
+            roomLight.intensity = maxLightIntensity;
         } else {
             // Turn off the light 
             roomLight.intensity = 0;

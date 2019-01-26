@@ -1,16 +1,32 @@
 fileFormatVersion: 2
-guid: 1585efff53959c14184f1f7df22646d4
+guid: 74f01edbf77c82447a7910ed288c240d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Bottom
-    2100002: Wood
+    2100000: Panel
+    2100002: Trim
+    2100004: Wallpaper
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Floor2
-  externalObjects: {}
+    4300000: Wall2
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Panel
+    second: {fileID: 2100000, guid: b861fba73b463bb44a5a8153eb791d23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trim
+    second: {fileID: 2100000, guid: 980c902d4b656664c9563ceeced375d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wallpaper
+    second: {fileID: 2100000, guid: be8f02de71960b64a81ebe228828d92e, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
