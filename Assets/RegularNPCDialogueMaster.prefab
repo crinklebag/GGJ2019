@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5854341948710877214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5854341948710877212}
+  - component: {fileID: 5854341948710877213}
+  m_Layer: 0
+  m_Name: DialogueMaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5854341948710877212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854341948710877214}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.5058017, y: 2.5421295, z: -2.9745245}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5854341948710877213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854341948710877214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0ddce45bb3e7c4f8104a6eb2c72fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleLinesArray:
+  - This place is fabulous.
+  - Ooooooh so spacious!
+  - Wow, so beautiful.
+  scaredLinesArray:
+  - What was that?
+  - What the hell?
+  - What the?
+  - Oh my god.
+  - Ah!
+  - Eeek!
+  - Woah!
+  - Huh?
+  - "Um, what\u2019s happening?"
+  - Eh?!
+  playerWinsLevel1: "I\u2019m out of here."
+  playerWinsLevel2: "This place creeps me out. Let\u2019s go."
+  playerWinsLevel3: Fuck this place.
+  playerLosesLevel1: "Give us the lease, we\u2019ll take it!"
+  playerLosesLevel2: This place is perfect. Lease please!
+  playerLosesLevel3: "Any offers yet? We\u2019re sold."
