@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Numerics;
 using UnityEngine;
+using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
 [Serializable]
@@ -12,7 +13,7 @@ public class ShakeMovement : Movement
     [SerializeField] private float _hoverSpeed;
 
     [SerializeField] private float _rotationRange;
-    [SerializeField] private float _rotationSpeed;
+    [SerializeField] private Vector2 _rotationSpeeds;
 
     private Vector3 _startPosition;
     private Vector3 _startRotation;
@@ -35,9 +36,9 @@ public class ShakeMovement : Movement
             _modelTransform.localPosition.z);
 
         _modelTransform.eulerAngles = new Vector3(
-            _startRotation.x + (Mathf.Sin(Time.time * _rotationSpeed) * _rotationRange),
+            _startRotation.x + (Mathf.Sin(Time.time * _rotationSpeeds[0]) * _rotationRange),
             _modelTransform.localEulerAngles.y,
-            _startRotation.z + (Mathf.Sin(Time.time * _rotationSpeed) * _rotationRange));
+            _startRotation.z + (Mathf.Sin(Time.time * _rotationSpeeds[1]) * _rotationRange));
     }
 
     public override IEnumerator FinishMovement()

@@ -4,6 +4,7 @@ using UnityEngine;
 public class DefaultEntity : Entity
 {
     [SerializeField] protected SpriteRenderer _sprite;
+    [SerializeField] protected Animator _animator;
 
     [SerializeField] private bool canInteract = false;
     private Entity _interactEntity;
@@ -42,6 +43,8 @@ public class DefaultEntity : Entity
     {
         //Debug.Log("Handle Movement Player Entity: " + input);
         _movement.Move(input);
+        _animator.SetFloat("Horizontal", input.x);
+        _animator.SetFloat("Vertical", input.z);
     }
 
     protected override Entity HandleSelect(bool isSelecting)
@@ -74,5 +77,11 @@ public class DefaultEntity : Entity
         Debug.Log("Can't Posses");
         canInteract = false;
         _interactEntity = null;
+    }
+
+
+    public void SwapSprites()
+    {
+        _sprite.flipX = !_sprite.flipX;
     }
 }
