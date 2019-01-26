@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class DefaultEntity : Entity
 {
-    [Header("Components")]
     [SerializeField] protected SpriteRenderer _sprite;
 
     [SerializeField] private bool canInteract = false;
     private Entity _interactEntity;
 
     private bool _inUse = false;
+
 
     public override IEnumerator EnterState()
     {
@@ -35,12 +35,11 @@ public class DefaultEntity : Entity
         HandleMovement(InputManager.PlayerInput.CurrentInput);
         return HandleSelect(InputManager.PlayerInput.IsSelecting);
     }
-
-
+    
     protected override void HandleMovement(Vector3 input)
     {
         //Debug.Log("Handle Movement Player Entity: " + input);
-        PlayerController.PlayerTransform.localPosition += input * _moveSpeed * Time.deltaTime;
+        _movement.Move(input);
     }
 
     protected override Entity HandleSelect(bool isSelecting)
@@ -50,7 +49,6 @@ public class DefaultEntity : Entity
         Debug.Log("Handle Select Player Entity");
         canInteract = false;
         return _interactEntity;
-
     }
 
 

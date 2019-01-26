@@ -5,9 +5,8 @@ using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
-    [Header("Values")]
-    [SerializeField] protected float _moveSpeed;
-
+    [Header("Components")]
+    [SerializeField] protected Movement _movement;
 
     public abstract IEnumerator EnterState();
     public abstract IEnumerator ExitState();
