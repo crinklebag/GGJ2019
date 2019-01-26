@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class PossessableEntity : Entity
 {
+    [Header("Components")]
+    [SerializeField] protected MeshRenderer _mesh;
+
     public override IEnumerator EnterState()
     {
         

@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class DefaultEntity : Entity
 {
+    [Header("Components")]
+    [SerializeField] protected SpriteRenderer _sprite;
+
     [SerializeField] private bool canInteract = false;
     private Entity _interactEntity;
 
