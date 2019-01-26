@@ -5,13 +5,13 @@ public class PossessableEntity : Entity
 {
     public override IEnumerator EnterState()
     {
-        // Turn on sprite
-
+        
         yield return null;
     }
 
     public override IEnumerator ExitState()
     {
+
         yield return null;
     }
 
@@ -23,19 +23,14 @@ public class PossessableEntity : Entity
 
     protected override void HandleMovement(Vector3 input)
     {
-        Debug.Log("Handle Movement Possessable Entity:: " + input);
+        //Debug.Log("Handle Movement Possessable Entity:: " + input);
         transform.localPosition += input * _moveSpeed * Time.deltaTime;
     }
 
     protected override Entity HandleSelect(bool isSelecting)
     {
-        Debug.Log("Handle Select Possessable Entity");
+        //Debug.Log("Handle Select Possessable Entity");
 
-        if (isSelecting)
-        {
-            return PlayerController.PlayerEntity;
-        }
-
-        return null;
+        return isSelecting ? PlayerController.PlayerEntity : null;
     }
 }

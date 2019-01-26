@@ -21,6 +21,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public IEnumerator Start()
     {
+        yield return _currentEntity.StartCoroutine(_currentEntity.EnterState());
         StartCoroutine(HandleInput());
 
         yield return null;

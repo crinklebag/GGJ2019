@@ -5,6 +5,10 @@ using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField] protected SpriteRenderer _sprite;
+    
+    [Header("Values")]
     [SerializeField] protected float _moveSpeed;
 
 

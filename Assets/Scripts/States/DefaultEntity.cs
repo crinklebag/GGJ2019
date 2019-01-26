@@ -6,17 +6,22 @@ public class DefaultEntity : Entity
     [SerializeField] private bool canInteract = false;
     private Entity _interactEntity;
 
+    private bool _inUse = false;
 
     public override IEnumerator EnterState()
     {
-        // Turn on sprite
-        
+        _sprite.enabled = true;
+        _interactEntity = null;
+        _inUse = true;
+
         yield return null;
     }
 
     public override IEnumerator ExitState()
     {
-        // Turn off sprite
+        _sprite.enabled = false;
+        _interactEntity = null;
+        _inUse = false;
 
         yield return null;
     }
@@ -37,21 +42,20 @@ public class DefaultEntity : Entity
 
     protected override Entity HandleSelect(bool isSelecting)
     {
-        if (isSelecting && canInteract)
-        {
-            canInteract = false;
-            Debug.Log("Handle Select Player Entity");
-            // Return selected entity's script
-            return _interactEntity;
-        }
+        if (!isSelecting || !canInteract || _interactEntity == null) return null;
 
-        return null;
+        Debug.Log("Handle Select Player Entity");
+        canInteract = false;
+        return _interactEntity;
+
     }
 
 
     public void OnTriggerEnter(Collider col)
     {
         if (col.tag != "Possessable") return;
+
+        if (!_inUse) return;
 
         Debug.Log("Can Posses");
         canInteract = true;
@@ -61,6 +65,8 @@ public class DefaultEntity : Entity
     public void OnTriggerExit(Collider col)
     {
         if (col.tag != "Possessable") return;
+
+        if (!_inUse) return;
 
         Debug.Log("Can't Posses");
         canInteract = false;

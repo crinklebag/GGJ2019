@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3fe2a4c9276c5a408abc40de531e1d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sprite: {fileID: 1294611394}
   _moveSpeed: 3
 --- !u!65 &201488509
 BoxCollider:
@@ -311,6 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 349453582}
   _defaultEntity: {fileID: 0}
+  _currentEntity: {fileID: 0}
 --- !u!4 &349453582
 Transform:
   m_ObjectHideFlags: 0
@@ -517,6 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e96616f09121844b3e39b8f3dd22c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sprite: {fileID: 610903983}
   _moveSpeed: 5
   canInteract: 0
 --- !u!4 &790051162
@@ -592,6 +595,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7381bdbad1fa6374da5e4220bf43cdae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerInput:
+    CurrentInput: {x: 0, y: 0, z: 0}
+    IsSelecting: 0
 --- !u!4 &892864881
 Transform:
   m_ObjectHideFlags: 0
