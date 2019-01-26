@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PossessableEntity : Entity
 {
-    [Header("Components")]
     [SerializeField] protected MeshRenderer _mesh;
 
     public override IEnumerator EnterState()
@@ -14,6 +13,7 @@ public class PossessableEntity : Entity
 
     public override IEnumerator ExitState()
     {
+        yield return _movement.StartCoroutine(_movement.FinishMovement());
 
         yield return null;
     }
@@ -27,7 +27,7 @@ public class PossessableEntity : Entity
     protected override void HandleMovement(Vector3 input)
     {
         //Debug.Log("Handle Movement Possessable Entity:: " + input);
-        transform.localPosition += input * _moveSpeed * Time.deltaTime;
+        _movement.Move(input);
     }
 
     protected override Entity HandleSelect(bool isSelecting)

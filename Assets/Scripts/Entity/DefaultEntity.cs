@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class DefaultEntity : Entity
 {
-    [Header("Components")]
     [SerializeField] protected SpriteRenderer _sprite;
+    [SerializeField] protected Animator _animator;
 
     [SerializeField] private bool canInteract = false;
     private Entity _interactEntity;
 
     private bool _inUse = false;
+
 
     public override IEnumerator EnterState()
     {
@@ -26,6 +27,8 @@ public class DefaultEntity : Entity
         _interactEntity = null;
         _inUse = false;
 
+        yield return _movement.StartCoroutine(_movement.FinishMovement());
+
         yield return null;
     }
 
@@ -35,12 +38,13 @@ public class DefaultEntity : Entity
         HandleMovement(InputManager.PlayerInput.CurrentInput);
         return HandleSelect(InputManager.PlayerInput.IsSelecting);
     }
-
-
+    
     protected override void HandleMovement(Vector3 input)
     {
         //Debug.Log("Handle Movement Player Entity: " + input);
-        PlayerController.PlayerTransform.localPosition += input * _moveSpeed * Time.deltaTime;
+        _movement.Move(input);
+        _animator.SetFloat("Horizontal", input.x);
+        _animator.SetFloat("Vertical", input.z);
     }
 
     protected override Entity HandleSelect(bool isSelecting)
@@ -50,7 +54,6 @@ public class DefaultEntity : Entity
         Debug.Log("Handle Select Player Entity");
         canInteract = false;
         return _interactEntity;
-
     }
 
 
@@ -74,5 +77,11 @@ public class DefaultEntity : Entity
         Debug.Log("Can't Posses");
         canInteract = false;
         _interactEntity = null;
+    }
+
+
+    public void SwapSprites()
+    {
+        _sprite.flipX = !_sprite.flipX;
     }
 }
