@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RegularNPCDialogue : MonoBehaviour
+public class RegularNPCDialogue : MonoSingleton<RegularNPCDialogue>
 {
 
     [Header("NPC Line Buckets")]
