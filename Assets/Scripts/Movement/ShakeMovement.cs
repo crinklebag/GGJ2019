@@ -29,6 +29,9 @@ public class ShakeMovement : Movement
     {
         transform.localPosition += input * _speed * Time.deltaTime;
 
+        if (_modelTransform == null)
+            return;
+
         // Move child object up and down
         _modelTransform.localPosition = new Vector3(
             _modelTransform.localPosition.x,
@@ -43,6 +46,9 @@ public class ShakeMovement : Movement
 
     public override IEnumerator FinishMovement()
     {
+        if (_modelTransform == null)
+            yield break;
+
         // TODO: move back to start position and rotation
         _modelTransform.localPosition = _startPosition;
         _modelTransform.eulerAngles = _startRotation;

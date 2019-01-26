@@ -1,18 +1,21 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class PossessableEntity : Entity
+public class BreakableEntity : Entity
 {
+    [SerializeField] private PropShatter _propShatter;
+
+
     public override IEnumerator EnterState()
     {
-        
+
         yield return null;
     }
 
     public override IEnumerator ExitState()
     {
-        if(_movement != null)
-            yield return _movement.StartCoroutine(_movement.FinishMovement());
+        //yield return _movement.StartCoroutine(_movement.FinishMovement());
+        Destroy(this.gameObject, 0.5f);
 
         yield return null;
     }
@@ -31,8 +34,17 @@ public class PossessableEntity : Entity
 
     protected override Entity HandleSelect(bool isSelecting)
     {
-        //Debug.Log("Handle Select Possessable Entity");
+        Debug.Log("Handle Select Breakable Entity");
 
-        return isSelecting ? PlayerController.PlayerEntity : null;
+        if (isSelecting)
+        {
+            Debug.Log("Return player");
+            _propShatter.ShatterObject();
+            return PlayerController.PlayerEntity;
+        }
+        else
+        {
+            return null;
+        }
     }
 }
