@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 349453582}
-  _defaultState: {fileID: 349453584}
+  _defaultEntity: {fileID: 349453584}
 --- !u!4 &349453582
 Transform:
   m_ObjectHideFlags: 0

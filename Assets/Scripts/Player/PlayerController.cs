@@ -5,22 +5,23 @@ public class PlayerController : MonoSingleton<PlayerController>
     public static Transform PlayerTransform { get => Instance._transform; }
     [SerializeField] protected Transform _transform;
 
-    [SerializeField] private DefaultState _defaultState;
-    private State _currentState;
+    [SerializeField] private DefaultEntity _defaultEntity;
+    private Entity _currentEntity;
 
 
     public void Awake()
     {
-        _currentState = GetComponent<DefaultState>();
+        _currentEntity = GetComponent<DefaultEntity>();
     }
 
     public void Update()
     {
+        // TODO: Handle button press
         HandleMovement(InputManager.CurrentInput);
     }
 
     public void HandleMovement(Vector3 input)
     {
-        _currentState.HandleMovement(input);
+        _currentEntity.HandleMovement(input);
     }
 }
