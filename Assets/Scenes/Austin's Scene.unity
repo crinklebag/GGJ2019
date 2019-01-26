@@ -526,7 +526,7 @@ PrefabInstance:
     - target: {fileID: 5292236438015313056, guid: 83eb09ca15e4a594c89e8397ed8ab3fe,
         type: 3}
       propertyPath: m_Name
-      value: ShakingEntity
+      value: ShakingVase
       objectReference: {fileID: 0}
     - target: {fileID: 5292236438015313057, guid: 83eb09ca15e4a594c89e8397ed8ab3fe,
         type: 3}

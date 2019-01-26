@@ -21,7 +21,7 @@ public class ShakeMovement : Movement
     public void Awake()
     {
         _startPosition = _modelTransform.localPosition;
-        _startRotation = _modelTransform.eulerAngles;
+        _startRotation = _modelTransform.localEulerAngles;
     }
 
     public override void Move(Vector3 input)
@@ -31,12 +31,12 @@ public class ShakeMovement : Movement
         // Move child object up and down
         _modelTransform.localPosition = new Vector3(
             _modelTransform.localPosition.x,
-            _startPosition.x + (Mathf.Sin(Time.time * _hoverSpeed) * _hoverRange),
+            _startPosition.y + (Mathf.Sin(Time.time * _hoverSpeed) * _hoverRange),
             _modelTransform.localPosition.z);
 
         _modelTransform.eulerAngles = new Vector3(
             _startRotation.x + (Mathf.Sin(Time.time * _rotationSpeed) * _rotationRange),
-            _modelTransform.eulerAngles.y,
+            _modelTransform.localEulerAngles.y,
             _startRotation.z + (Mathf.Sin(Time.time * _rotationSpeed) * _rotationRange));
     }
 
