@@ -2,11 +2,11 @@
 
 public class InputManager : MonoSingleton<InputManager>
 {
-    private Vector2 _input;
+    public static Vector3 CurrentInput { get => Instance._input; set => Instance._input = value; }
+    private Vector3 _input;
 
     public void Update()
     {
-        _input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        Debug.Log("Input: " + _input);
+        _input = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
     }
 }
