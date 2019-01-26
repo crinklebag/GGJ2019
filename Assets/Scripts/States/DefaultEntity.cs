@@ -1,29 +1,69 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class DefaultEntity : Entity
 {
-    public override void HandleMovement(Vector3 input)
+    [SerializeField] private bool canInteract = false;
+    private Entity _interactEntity;
+
+
+    public override IEnumerator EnterState()
     {
-        Debug.Log("Handle Movement Player Entity: " + input);
+        // Turn on sprite
+        
+        yield return null;
+    }
+
+    public override IEnumerator ExitState()
+    {
+        // Turn off sprite
+
+        yield return null;
+    }
+
+
+    public override Entity HandleInput()
+    {
+        HandleMovement(InputManager.PlayerInput.CurrentInput);
+        return HandleSelect(InputManager.PlayerInput.IsSelecting);
+    }
+
+
+    protected override void HandleMovement(Vector3 input)
+    {
+        //Debug.Log("Handle Movement Player Entity: " + input);
         PlayerController.PlayerTransform.localPosition += input * _moveSpeed * Time.deltaTime;
     }
 
-    public override void HandleInput()
+    protected override Entity HandleSelect(bool isSelecting)
     {
-        Debug.Log("Handle Input Player Entity");
-    }
-}
+        if (isSelecting && canInteract)
+        {
+            canInteract = false;
+            Debug.Log("Handle Select Player Entity");
+            // Return selected entity's script
+            return _interactEntity;
+        }
 
-public class PossessableEntity : Entity
-{
-    public override void HandleMovement(Vector3 input)
-    {
-        Debug.Log("Handle Movement Possessable Entity:: " + input);
-        PlayerController.PlayerTransform.localPosition += input * _moveSpeed * Time.deltaTime;
+        return null;
     }
 
-    public override void HandleInput()
+
+    public void OnTriggerEnter(Collider col)
     {
-        Debug.Log("Handle Input Possessable Entity");
+        if (col.tag != "Possessable") return;
+
+        Debug.Log("Can Posses");
+        canInteract = true;
+        _interactEntity = col.GetComponent<Entity>();
+    }
+
+    public void OnTriggerExit(Collider col)
+    {
+        if (col.tag != "Possessable") return;
+
+        Debug.Log("Can't Posses");
+        canInteract = false;
+        _interactEntity = null;
     }
 }

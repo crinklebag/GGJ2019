@@ -7,6 +7,14 @@ public abstract class Entity : MonoBehaviour
 {
     [SerializeField] protected float _moveSpeed;
 
-    public abstract void HandleMovement(Vector3 input);
-    public abstract void HandleInput();
+
+    public abstract IEnumerator EnterState();
+    public abstract IEnumerator ExitState();
+
+
+    protected abstract void HandleMovement(Vector3 input);
+    protected abstract Entity HandleSelect(bool isSelecting);
+
+
+    public abstract Entity HandleInput();
 }

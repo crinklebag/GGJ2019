@@ -1,27 +1,47 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PlayerController : MonoSingleton<PlayerController>
 {
     public static Transform PlayerTransform { get => Instance._transform; }
     [SerializeField] protected Transform _transform;
 
+    public static DefaultEntity PlayerEntity { get => Instance._defaultEntity; }
     [SerializeField] private DefaultEntity _defaultEntity;
-    private Entity _currentEntity;
+
+    [SerializeField] private Entity _currentEntity;
 
 
     public void Awake()
     {
-        _currentEntity = GetComponent<DefaultEntity>();
+        _transform = GameObject.FindGameObjectWithTag("Player").transform;
+        _defaultEntity = _transform.GetComponent<DefaultEntity>();
+        _currentEntity = _defaultEntity;
     }
 
-    public void Update()
+    public IEnumerator Start()
     {
-        // TODO: Handle button press
-        HandleMovement(InputManager.CurrentInput);
+        StartCoroutine(HandleInput());
+
+        yield return null;
     }
 
-    public void HandleMovement(Vector3 input)
+    public IEnumerator HandleInput()
     {
-        _currentEntity.HandleMovement(input);
+        while (Application.isPlaying)
+        {
+            var entity = _currentEntity.HandleInput();
+
+            if (entity != null)
+            {
+                yield return _currentEntity.StartCoroutine(_currentEntity.ExitState());
+                _currentEntity = entity;
+                yield return _currentEntity.StartCoroutine(_currentEntity.EnterState());
+            }
+
+            yield return null;
+        }
+
+        yield return null;
     }
 }
