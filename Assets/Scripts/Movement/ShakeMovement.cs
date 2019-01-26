@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Numerics;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
@@ -9,14 +10,18 @@ public class ShakeMovement : Movement
     [SerializeField] private Transform _modelTransform;
     [SerializeField] private float _hoverRange;
     [SerializeField] private float _hoverSpeed;
-    
-    private Vector3 _startPosition;
 
+    [SerializeField] private float _rotationRange;
+    [SerializeField] private float _rotationSpeed;
+
+    private Vector3 _startPosition;
+    private Vector3 _startRotation;
 
 
     public void Awake()
     {
         _startPosition = _modelTransform.localPosition;
+        _startRotation = _modelTransform.eulerAngles;
     }
 
     public override void Move(Vector3 input)
@@ -28,5 +33,19 @@ public class ShakeMovement : Movement
             _modelTransform.localPosition.x,
             _startPosition.x + (Mathf.Sin(Time.time * _hoverSpeed) * _hoverRange),
             _modelTransform.localPosition.z);
+
+        _modelTransform.eulerAngles = new Vector3(
+            _startRotation.x + (Mathf.Sin(Time.time * _rotationSpeed) * _rotationRange),
+            _modelTransform.eulerAngles.y,
+            _startRotation.z + (Mathf.Sin(Time.time * _rotationSpeed) * _rotationRange));
+    }
+
+    public override IEnumerator FinishMovement()
+    {
+        // TODO: move back to start position and rotation
+        _modelTransform.localPosition = _startPosition;
+        _modelTransform.eulerAngles = _startRotation;
+
+        yield return null;
     }
 }

@@ -13,6 +13,7 @@ public class PossessableEntity : Entity
 
     public override IEnumerator ExitState()
     {
+        yield return _movement.StartCoroutine(_movement.FinishMovement());
 
         yield return null;
     }

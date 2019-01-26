@@ -26,6 +26,8 @@ public class DefaultEntity : Entity
         _interactEntity = null;
         _inUse = false;
 
+        yield return _movement.StartCoroutine(_movement.FinishMovement());
+
         yield return null;
     }
 

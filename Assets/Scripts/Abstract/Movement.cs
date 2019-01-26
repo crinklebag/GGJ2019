@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public abstract class Movement : MonoBehaviour
 {
@@ -6,4 +7,7 @@ public abstract class Movement : MonoBehaviour
     [SerializeField] protected float _speed;
 
     public abstract void Move(Vector3 input);
+
+    public abstract IEnumerator FinishMovement();
+
 }
