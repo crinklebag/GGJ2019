@@ -70,7 +70,7 @@ public class DefaultEntity : Entity
 
         Debug.Log("Can Posses");
         canInteract = true;
-        _interactEntity = col.GetComponent<Entity>();
+        _interactEntity = col.transform.GetComponent<Entity>();
     }
 
     public void OnTriggerExit(Collider col)
