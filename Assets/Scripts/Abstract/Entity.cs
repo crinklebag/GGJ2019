@@ -8,6 +8,7 @@ public abstract class Entity : MonoBehaviour
     [Header("Components")]
     [SerializeField] protected Movement _movement;
     [SerializeField] protected Rigidbody _rb;
+    [SerializeField] protected ParticleSystem _particleSystem;
 
     [Header("Rand Values")]
     [SerializeField] protected float _groundOffset;

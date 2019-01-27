@@ -6,6 +6,7 @@ public class DefaultEntity : Entity
 {
     [SerializeField] protected SpriteRenderer _sprite;
     [SerializeField] protected Animator _animator;
+    
 
     [SerializeField] private bool canInteract = false;
     private Entity _interactEntity;
@@ -16,11 +17,18 @@ public class DefaultEntity : Entity
     private IEnumerator _fadeRoutine = null;
 
 
+    public void Start()
+    {
+        _particleSystem.Play();
+    }
+
     public override IEnumerator EnterState()
     {
         _sprite.enabled = true;
         _interactEntity = null;
         _inUse = true;
+
+        _particleSystem.Play();
 
         if(_fadeRoutine != null)
             StopCoroutine(_fadeRoutine);
@@ -35,6 +43,8 @@ public class DefaultEntity : Entity
         _inUse = false;
 
         yield return _movement.StartCoroutine(_movement.FinishMovement());
+
+        _particleSystem.Stop();
 
         if (_fadeRoutine != null)
             StopCoroutine(_fadeRoutine);
