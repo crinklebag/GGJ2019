@@ -31,7 +31,6 @@ public class DefaultEntity : Entity
 
     public override IEnumerator ExitState()
     {
-        _sprite.enabled = false;
         _interactEntity = null;
         _inUse = false;
 
@@ -42,6 +41,8 @@ public class DefaultEntity : Entity
 
         _fadeRoutine = FadeOut();
         yield return StartCoroutine(_fadeRoutine);
+
+        _sprite.enabled = false;
     }
 
     private IEnumerator FadeIn()
