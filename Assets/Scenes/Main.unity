@@ -738,6 +738,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4057f5f7b050cc74988b5e803b011954, type: 3}
+--- !u!1001 &54019221
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5292236438015313056, guid: 4057f5f7b050cc74988b5e803b011954,
+        type: 3}
+      propertyPath: m_Name
+      value: ShakingRockingChair (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292236438015313057, guid: 4057f5f7b050cc74988b5e803b011954,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.477
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292236438015313057, guid: 4057f5f7b050cc74988b5e803b011954,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.408
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292236438015313057, guid: 4057f5f7b050cc74988b5e803b011954,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.653
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292236438015313057, guid: 4057f5f7b050cc74988b5e803b011954,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292236438015313057, guid: 4057f5f7b050cc74988b5e803b011954,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.3723543
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292236438015313057, guid: 4057f5f7b050cc74988b5e803b011954,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292236438015313057, guid: 4057f5f7b050cc74988b5e803b011954,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92809075
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292236438015313057, guid: 4057f5f7b050cc74988b5e803b011954,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 89
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292236438015313057, guid: 4057f5f7b050cc74988b5e803b011954,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292236438015313057, guid: 4057f5f7b050cc74988b5e803b011954,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 43.722004
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292236438015313057, guid: 4057f5f7b050cc74988b5e803b011954,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4057f5f7b050cc74988b5e803b011954, type: 3}
 --- !u!1001 &59774945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2223,7 +2292,7 @@ PrefabInstance:
     - target: {fileID: 1608580022895765907, guid: d1ebadb0c90dd424dacd40d454a40713,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.975
+      value: 0.245
       objectReference: {fileID: 0}
     - target: {fileID: 1608580022895765907, guid: d1ebadb0c90dd424dacd40d454a40713,
         type: 3}
@@ -13099,6 +13168,11 @@ PrefabInstance:
       propertyPath: _fadeSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5855438866284032311, guid: 7f69d4d97effc32458c0f880596b533d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f69d4d97effc32458c0f880596b533d, type: 3}
 --- !u!4 &546600441 stripped
@@ -15391,7 +15465,7 @@ PrefabInstance:
     - target: {fileID: 1608580022895765907, guid: d1ebadb0c90dd424dacd40d454a40713,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.607
+      value: 5.86
       objectReference: {fileID: 0}
     - target: {fileID: 1608580022895765907, guid: d1ebadb0c90dd424dacd40d454a40713,
         type: 3}
@@ -20956,6 +21030,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShakingRockingChair
       objectReference: {fileID: 0}
+    - target: {fileID: 5292236438015313056, guid: 4057f5f7b050cc74988b5e803b011954,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5292236438015313057, guid: 4057f5f7b050cc74988b5e803b011954,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21024,7 +21103,7 @@ PrefabInstance:
     - target: {fileID: 338241275919669332, guid: 4057f5f7b050cc74988b5e803b011954,
         type: 3}
       propertyPath: _rotationSpeeds.x
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4057f5f7b050cc74988b5e803b011954, type: 3}
@@ -27384,6 +27463,7 @@ MonoBehaviour:
   _playerInput:
     CurrentInput: {x: 0, y: 0, z: 0}
     IsSelecting: 0
+    FloatValue: 0
 --- !u!4 &1621636276
 Transform:
   m_ObjectHideFlags: 0
@@ -28112,7 +28192,7 @@ PrefabInstance:
     - target: {fileID: 1608580022895765907, guid: d1ebadb0c90dd424dacd40d454a40713,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.289
+      value: 11.531
       objectReference: {fileID: 0}
     - target: {fileID: 1608580022895765907, guid: d1ebadb0c90dd424dacd40d454a40713,
         type: 3}
@@ -29788,7 +29868,7 @@ PrefabInstance:
     - target: {fileID: 1608580022895765907, guid: d1ebadb0c90dd424dacd40d454a40713,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.59
+      value: 5.855
       objectReference: {fileID: 0}
     - target: {fileID: 1608580022895765907, guid: d1ebadb0c90dd424dacd40d454a40713,
         type: 3}

@@ -38,7 +38,7 @@ public class ShakeMovement : Movement
             _startPosition.y + (Mathf.Sin(Time.time * _hoverSpeed) * _hoverRange),
             _modelTransform.localPosition.z);
 
-        _modelTransform.eulerAngles = new Vector3(
+        _modelTransform.localEulerAngles = new Vector3(
             _startRotation.x + (Mathf.Sin(Time.time * _rotationSpeeds[0]) * _rotationRange),
             _modelTransform.localEulerAngles.y,
             _startRotation.z + (Mathf.Sin(Time.time * _rotationSpeeds[1]) * _rotationRange));

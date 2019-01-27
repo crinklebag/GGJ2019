@@ -132,7 +132,7 @@ public class DefaultEntity : Entity
 
     private void HandleFloat(float value)
     {
-        Debug.Log("Handle Float Value: " + value);
+        //Debug.Log("Handle Float Value: " + value);
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + (value * _floatSpeed * Time.deltaTime), transform.localPosition.z);
     }
 
