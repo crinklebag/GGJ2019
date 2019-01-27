@@ -4,16 +4,20 @@ using UnityEngine;
 public class BreakableEntity : Entity
 {
     [SerializeField] private PropShatter _propShatter;
+    [SerializeField] private SfxPlayer _sfxPlayer;
+
 
 
     public override IEnumerator EnterState()
     {
+        yield return MoveOffGround();
 
         yield return null;
     }
 
     public override IEnumerator ExitState()
     {
+        _sfxPlayer.Play();
         //yield return _movement.StartCoroutine(_movement.FinishMovement());
         Destroy(this.gameObject, 0.5f);
 

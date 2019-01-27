@@ -281,13 +281,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movement: {fileID: 0}
+  _rb: {fileID: 707801123512235055}
+  _groundOffset: 0
+  _pickupSpeed: 0
   _screens:
   - {fileID: 8585043981536071117}
   - {fileID: 2660409106245551916}
-  - {fileID: 8585043981536071117}
-  - {fileID: 8585043981536071117}
-  _minScreenTime: 0.25
-  _maxScreenTime: 1.5
+  _minScreenTime: 0.15
+  _maxScreenTime: 0.5
 --- !u!65 &5722428015303235258
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -299,8 +300,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &707801123512235055
 Rigidbody:
   m_ObjectHideFlags: 0
