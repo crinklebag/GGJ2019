@@ -26,34 +26,7 @@ public class RoomController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (occupantCounter <= 0) {
-            ToggleLight(false);
-        }
-        else {
-            ToggleLight(true);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        if (other.tag == "NPC") {
-            occupantCounter++;
-        }
-    }
-
-    private void OnTriggerExit(Collider other) {
-        if (other.tag == "NPC") {
-            occupantCounter--;
-        }
-    }
-
-    void ToggleLight(bool isOn) {
-        if (isOn) {
-            // Turn on the light
-            roomLight.intensity = maxLightIntensity;
-        } else {
-            // Turn off the light 
-            roomLight.intensity = 0;
-        }
+      
     }
 
     public RoomType GetRoomType(){
