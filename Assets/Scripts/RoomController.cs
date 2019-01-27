@@ -11,8 +11,9 @@ public class RoomController : MonoBehaviour
     // lights on when they enter 
 
     public enum RoomType { LIVING_ROOM = 0, KITCHEN, BEDROOM };
-
+    
     [SerializeField] List<GameObject> waypoints = new List<GameObject>();
+    [SerializeField] List<GameObject> endpoints = new List<GameObject>();
     [SerializeField] Light roomLight;
     [SerializeField] GameObject roomTrigger;
     [SerializeField] RoomType roomType;
@@ -21,10 +22,6 @@ public class RoomController : MonoBehaviour
 
     private int occupantCounter = 0;
 
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -65,5 +62,10 @@ public class RoomController : MonoBehaviour
 
     public List<GameObject> GetWaypoints() {
         return waypoints;
+    }
+
+    public List<GameObject> GetEndPoints ()
+    {
+        return endpoints;
     }
 }
