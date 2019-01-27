@@ -6,6 +6,7 @@ public class DefaultEntity : Entity
 {
     [SerializeField] protected SpriteRenderer _sprite;
     [SerializeField] protected Animator _animator;
+    
 
     [SerializeField] private bool canInteract = false;
     private Entity _interactEntity;
@@ -15,12 +16,22 @@ public class DefaultEntity : Entity
     [SerializeField] private float _fadeSpeed;
     private IEnumerator _fadeRoutine = null;
 
+    [SerializeField] private float _floatSpeed;
+
+
+
+    public void Start()
+    {
+        _particleSystem.Play();
+    }
 
     public override IEnumerator EnterState()
     {
         _sprite.enabled = true;
         _interactEntity = null;
         _inUse = true;
+
+        _particleSystem.Play();
 
         if(_fadeRoutine != null)
             StopCoroutine(_fadeRoutine);
@@ -35,6 +46,8 @@ public class DefaultEntity : Entity
         _inUse = false;
 
         yield return _movement.StartCoroutine(_movement.FinishMovement());
+
+        _particleSystem.Stop();
 
         if (_fadeRoutine != null)
             StopCoroutine(_fadeRoutine);
@@ -87,8 +100,10 @@ public class DefaultEntity : Entity
         yield return null;
     }
 
+
     public override Entity HandleInput()
     {
+        HandleFloat(InputManager.PlayerInput.FloatValue);
         HandleMovement(InputManager.PlayerInput.CurrentInput);
         return HandleSelect(InputManager.PlayerInput.IsSelecting);
     }
@@ -115,6 +130,11 @@ public class DefaultEntity : Entity
         return _interactEntity;
     }
 
+    private void HandleFloat(float value)
+    {
+        Debug.Log("Handle Float Value: " + value);
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + (value * _floatSpeed * Time.deltaTime), transform.localPosition.z);
+    }
 
     public void OnTriggerEnter(Collider col)
     {

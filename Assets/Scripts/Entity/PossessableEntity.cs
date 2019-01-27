@@ -3,10 +3,23 @@ using UnityEngine;
 
 public class PossessableEntity : Entity
 {
+    [SerializeField] protected ParticleSystem _idleSystem;
+
+    public void Start()
+    {
+        if (!_idleSystem)
+            return;
+        _idleSystem.Play();
+    }
+
     public override IEnumerator EnterState()
     {
         _rb.useGravity = false;
         _rb.isKinematic = true;
+
+
+        _particleSystem.Play();
+        _idleSystem.Stop();
 
         yield return MoveOffGround();
 
@@ -17,6 +30,10 @@ public class PossessableEntity : Entity
     {
         if(_movement != null)
             yield return _movement.StartCoroutine(_movement.FinishMovement());
+
+        _particleSystem.Stop();
+        _idleSystem.Play();
+
 
         _rb.useGravity = true;
         _rb.isKinematic = false;
