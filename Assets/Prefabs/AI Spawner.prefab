@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7729854edd72eb0409027266b87bbf8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiPrefabsArray: []
-  spawnTransform: {fileID: 0}
+  aiPrefabsArray:
+  - {fileID: 0}
+  - {fileID: 0}
   minSpawnDelay: 30
   maxSpawnDelay: 60
   spawnDelayModifier: 0.8

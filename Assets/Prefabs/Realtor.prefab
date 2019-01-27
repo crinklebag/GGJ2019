@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 1909830278115481317}
   - component: {fileID: 5375613468311390386}
   - component: {fileID: 715493533818689314}
+  - component: {fileID: 1245807450975629059}
   m_Layer: 0
   m_Name: Realtor
   m_TagString: Untagged
@@ -321,6 +322,26 @@ MonoBehaviour:
   moveSpeed: 0.02
   npcTarget: {fileID: 0}
   npcFollowDistance: 3
+  aiSpawner: {fileID: 0}
+--- !u!95 &1245807450975629059
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5375613468311390387}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5bc817ce511391f4db3a1e8851f87bb1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5375613468561563143
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,12 +46,18 @@ public class AIController : MonoBehaviour
 
     void GetNewRoomWaypoints (Collider other)
     {
-        waypoints.Clear();
-        waypoints = other.GetComponent<RoomController>().GetWaypoints();
-        ShuffleWaypoints();
-        waypoints.AddRange(other.GetComponent<RoomController>().GetEndPoints());
-        currentWaypointIndex = 0;
-        currentWaypoint = waypoints[currentWaypointIndex];
+        if (this.GetComponent<CapsuleCollider>())
+        {
+            RoomController roomController = other.GetComponent<RoomController>();
+
+            waypoints.Clear();
+            waypoints = roomController.GetWaypoints();
+            ShuffleWaypoints();
+            if(roomController.GetStartpoints().Count > 0) { waypoints.InsertRange(0, roomController.GetStartpoints()); }
+            waypoints.AddRange(roomController.GetEndPoints());
+            currentWaypointIndex = 0;
+            currentWaypoint = waypoints[currentWaypointIndex];
+        }
     }
 
     void ShuffleWaypoints ()
@@ -118,6 +124,13 @@ public class AIController : MonoBehaviour
     public void SetSpawnerReference (AISpawner spawner)
     {
         aiSpawner = spawner;
+    }
+
+    public void AddStartPoint(GameObject startPoint)
+    {
+        waypoints.Insert(0, startPoint);
+        Debug.Log("Start point added");
+        Debug.Break();
     }
 
     // Go through the list and walk to each point

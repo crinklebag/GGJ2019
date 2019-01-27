@@ -7,7 +7,6 @@ public class AISpawner : MonoBehaviour
 
     [Header("References")]
     [SerializeField] GameObject[] aiPrefabsArray;
-    [SerializeField] Transform spawnTransform;
 
     [Header("Parameters")]
     [SerializeField] float minSpawnDelay;
@@ -26,7 +25,7 @@ public class AISpawner : MonoBehaviour
     
     private IEnumerator SpawnNPC ()
     {
-        GameObject newNPC = Instantiate(aiPrefabsArray[Random.Range(0, aiPrefabsArray.Length)], spawnTransform.position, Quaternion.identity) as GameObject;
+        GameObject newNPC = Instantiate(aiPrefabsArray[Random.Range(0, aiPrefabsArray.Length)], this.transform.position, Quaternion.identity) as GameObject;
         newNPC.GetComponent<AIController>().SetSpawnerReference(this);
         aiMasterList.Add(newNPC);
 

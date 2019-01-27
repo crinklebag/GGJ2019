@@ -62,6 +62,15 @@ public class RealtorDialogue : MonoBehaviour
             case RoomController.RoomType.BEDROOM:
                 roomLine = bedroomLinesArray[Random.Range(0, bedroomLinesArray.Length)];
                 break;
+            case RoomController.RoomType.HALLWAY:
+                roomLine = enterHallwayLinesArray[Random.Range(0, bedroomLinesArray.Length)];
+                break;
+            case RoomController.RoomType.BATHROOM:
+                roomLine = bathroomLinesArray[Random.Range(0, bedroomLinesArray.Length)];
+                break;
+            case RoomController.RoomType.ATTIC:
+                roomLine = atticLinesArray[Random.Range(0, bedroomLinesArray.Length)];
+                break;
         }
 
         return roomLine;
