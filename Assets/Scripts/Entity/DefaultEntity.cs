@@ -41,7 +41,12 @@ public class DefaultEntity : Entity
     
     protected override void HandleMovement(Vector3 input)
     {
+        var x = Mathf.Abs(input.x);
+        var z = Mathf.Abs(input.z);
+
         //Debug.Log("Handle Movement Player Entity: " + input);
+        _animator.SetBool("IsMoving", x <= Mathf.Epsilon && z <= Mathf.Epsilon ? false : true);
+
         _movement.Move(input);
         _animator.SetFloat("Horizontal", input.x);
         _animator.SetFloat("Vertical", input.z);
