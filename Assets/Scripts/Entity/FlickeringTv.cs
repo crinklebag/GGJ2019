@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FlickeringTv : Entity
 {
+    [SerializeField] protected ParticleSystem _idleSystem;
+
     [SerializeField] private List<GameObject> _screens;
     private IEnumerator flickerRountine = null;
 
@@ -11,16 +13,24 @@ public class FlickeringTv : Entity
     [SerializeField] private float _maxScreenTime;
 
 
+    public void Start()
+    {
+        if (!_idleSystem)
+            return;
+        _idleSystem.Play();
+    }
+
     public override IEnumerator EnterState()
     {
-
+        _particleSystem.Play();
+        _idleSystem.Stop();
         yield return null;
     }
 
     public override IEnumerator ExitState()
     {
-        if (_movement != null)
-            yield return _movement.StartCoroutine(_movement.FinishMovement());
+        _particleSystem.Stop();
+        _idleSystem.Play();
 
         yield return null;
     }

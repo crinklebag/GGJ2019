@@ -2125,6 +2125,7 @@ MonoBehaviour:
   _playerInput:
     CurrentInput: {x: 0, y: 0, z: 0}
     IsSelecting: 0
+    FloatValue: 0
 --- !u!4 &892864881
 Transform:
   m_ObjectHideFlags: 0
@@ -5164,8 +5165,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 141060326536690200, guid: 7f69d4d97effc32458c0f880596b533d,
         type: 3}
-      propertyPath: _fadeSpeed
-      value: 5
+      propertyPath: _floatSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855438866284032311, guid: 7f69d4d97effc32458c0f880596b533d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.39
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f69d4d97effc32458c0f880596b533d, type: 3}

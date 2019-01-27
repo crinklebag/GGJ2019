@@ -4,28 +4,46 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Screen_Off
-    100004: Screen_ON
-    100006: Screen_Yes
-    100008: Television
+    100002: Screen_Cat
+    100004: Screen_Dog
+    100006: Screen_Ghost
+    100008: Screen_Off
+    100010: Screen_ON
+    100012: Screen_Pikachu
+    100014: Television
     400000: //RootNode
-    400002: Screen_Off
-    400004: Screen_ON
-    400006: Screen_Yes
-    400008: Television
+    400002: Screen_Cat
+    400004: Screen_Dog
+    400006: Screen_Ghost
+    400008: Screen_Off
+    400010: Screen_ON
+    400012: Screen_Pikachu
+    400014: Television
     2100000: Television1
-    2300000: Screen_Off
-    2300002: Screen_ON
-    2300004: Screen_Yes
-    2300006: Television
-    3300000: Screen_Off
-    3300002: Screen_ON
-    3300004: Screen_Yes
-    3300006: Television
-    4300000: Screen_Yes
-    4300002: Screen_Off
-    4300004: Screen_ON
-    4300006: Television
+    2100002: lambert3
+    2100004: lambert4
+    2100006: lambert5
+    2300000: Screen_Cat
+    2300002: Screen_Dog
+    2300004: Screen_Ghost
+    2300006: Screen_Off
+    2300008: Screen_ON
+    2300010: Screen_Pikachu
+    2300012: Television
+    3300000: Screen_Cat
+    3300002: Screen_Dog
+    3300004: Screen_Ghost
+    3300006: Screen_Off
+    3300008: Screen_ON
+    3300010: Screen_Pikachu
+    3300012: Television
+    4300000: Screen_Off
+    4300002: Screen_ON
+    4300004: Screen_Pikachu
+    4300006: Screen_Cat
+    4300008: Screen_Ghost
+    4300010: Screen_Dog
+    4300012: Television
   externalObjects: {}
   materials:
     importMaterials: 1
