@@ -14,11 +14,21 @@ public class AIController : MonoBehaviour
     int currentWaypointIndex = 0;
     bool nearWaypoint = false;
 
+    Animator animator;
+    AISpawner aiSpawner;
+
+    private void Start()
+    {
+        animator = this.GetComponentInChildren<Animator>();
+    }
+
     void Update()
     {
         if (isScared)
         {
-            // Fade away???
+            animator.SetBool("isMoving", false);
+            RemoveFromMasterList();
+            Destroy(this.gameObject);
         }
         else
         {
@@ -57,18 +67,31 @@ public class AIController : MonoBehaviour
 
     void MoveCharacter ()
     {
-        float distance = Vector3.Distance(this.transform.position, currentWaypoint.transform.position);
-        Vector3 moveDirection = (currentWaypoint.transform.position - this.transform.position).normalized;
+        Vector3 destinationPosition = new Vector3(currentWaypoint.transform.position.x, this.transform.position.y, currentWaypoint.transform.position.z);
+        float distance = Vector3.Distance(this.transform.position, destinationPosition);
+        Vector3 moveDirection = (destinationPosition - this.transform.position).normalized;
 
         if(!nearWaypoint)
         {
             if (distance > 0.5f)
             {
+                animator.SetBool("isMoving", true);
                 this.GetComponent<Rigidbody>().MovePosition(this.transform.position + moveSpeed * moveDirection);
+
+                // Flip sprite
+                if(moveDirection.x < 0 && this.transform.localScale.x < 0)
+                {
+                    this.transform.localScale = Vector3.one;
+                }
+                else if(moveDirection.x > 0 && this.transform.localScale.x > 0)
+                {
+                    this.transform.localScale = new Vector3(-1, 1, 1);
+                }
             }
             else
             {
                 nearWaypoint = true;
+                animator.SetBool("isMoving", false);
                 StartCoroutine(WaitAtWayPoint());
             }
         }
@@ -80,6 +103,21 @@ public class AIController : MonoBehaviour
         currentWaypointIndex++;
         currentWaypoint = waypoints[currentWaypointIndex];
         nearWaypoint = false;
+    }
+
+    void RemoveFromMasterList ()
+    {
+        aiSpawner.RemoveNPC(this.gameObject);
+    }
+
+    public void MakeScared ()
+    {
+        isScared = true;
+    }
+
+    public void SetSpawnerReference (AISpawner spawner)
+    {
+        aiSpawner = spawner;
     }
 
     // Go through the list and walk to each point
