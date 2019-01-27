@@ -1,38 +1,15 @@
 fileFormatVersion: 2
-guid: 9805d6c790a921544b93452b70f00cc9
+guid: 72aa7c85a39aca748b7b1316ec7b7958
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Panel
-    2100002: Trim
-    2100004: Wallpaper2
-    2100006: Wallpaper1
+    2100000: Chair
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Wall2
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Panel
-    second: {fileID: 2100000, guid: b861fba73b463bb44a5a8153eb791d23, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Trim
-    second: {fileID: 2100000, guid: 980c902d4b656664c9563ceeced375d1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wallpaper1
-    second: {fileID: 2100000, guid: 7bf38e88997c43346b312072b44fd25a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wallpaper2
-    second: {fileID: 2100000, guid: be8f02de71960b64a81ebe228828d92e, type: 2}
+    4300000: GEO_Chair
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0

@@ -1,38 +1,63 @@
 fileFormatVersion: 2
-guid: 9805d6c790a921544b93452b70f00cc9
+guid: 626f55f1480213d4087485bfccad848d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: Panel
-    2100002: Trim
-    2100004: Wallpaper2
-    2100006: Wallpaper1
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Wall2
+    100000: Bench
+    100002: //RootNode
+    100004: Elevator
+    400000: Bench
+    400002: //RootNode
+    400004: Elevator
+    2100000: Roof
+    2100002: Exterior
+    2100004: Trim
+    2100006: Floor
+    2100008: Interior
+    2100010: Bench
+    2100012: Cushion
+    2300000: Bench
+    2300002: Elevator
+    3300000: Bench
+    3300002: Elevator
+    4300000: Elevator
+    4300002: Bench
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Panel
-    second: {fileID: 2100000, guid: b861fba73b463bb44a5a8153eb791d23, type: 2}
+      name: Bench
+    second: {fileID: 2100000, guid: f8e9078f42ecb224e8af325300bdb068, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cushion
+    second: {fileID: 2100000, guid: 6166a4ab7d944e948aa1fa4c0fefc4e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Exterior
+    second: {fileID: 2100000, guid: fd955d1866250064488e47924cfca7e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor
+    second: {fileID: 2100000, guid: 20cd37c89960b8e4c9d5166eb3b40c27, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Interior
+    second: {fileID: 2100000, guid: 833939b08747f2e418b97fc62f2f0298, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Roof
+    second: {fileID: 2100000, guid: 8b2fbe69007dfb845a901e76aa9d85d9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Trim
-    second: {fileID: 2100000, guid: 980c902d4b656664c9563ceeced375d1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wallpaper1
-    second: {fileID: 2100000, guid: 7bf38e88997c43346b312072b44fd25a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wallpaper2
-    second: {fileID: 2100000, guid: be8f02de71960b64a81ebe228828d92e, type: 2}
+    second: {fileID: 2100000, guid: 54fff685d4d2ca2409f842d9cf9cda4e, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
