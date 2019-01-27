@@ -5,7 +5,11 @@ public class PossessableEntity : Entity
 {
     public override IEnumerator EnterState()
     {
-        
+        _rb.useGravity = false;
+        _rb.isKinematic = true;
+
+        yield return MoveOffGround();
+
         yield return null;
     }
 
@@ -13,6 +17,9 @@ public class PossessableEntity : Entity
     {
         if(_movement != null)
             yield return _movement.StartCoroutine(_movement.FinishMovement());
+
+        _rb.useGravity = true;
+        _rb.isKinematic = false;
 
         yield return null;
     }
@@ -34,5 +41,13 @@ public class PossessableEntity : Entity
         //Debug.Log("Handle Select Possessable Entity");
 
         return isSelecting ? PlayerController.PlayerEntity : null;
+    }
+
+    public void OnTriggerEnter(Collider col)
+    {
+        if (col.transform.tag == "NPC")
+        {
+            //col.GetComponent<AIController>().MakeScared();
+        }
     }
 }
