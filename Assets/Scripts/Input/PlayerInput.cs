@@ -8,8 +8,10 @@ public class PlayerInput
     {
         CurrentInput = Vector3.zero;
         IsSelecting = false;
+        FloatValue = 0.0f;
     }
 
     public Vector3 CurrentInput;
     public bool IsSelecting;
+    public float FloatValue;
 }

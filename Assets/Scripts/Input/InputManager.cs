@@ -14,5 +14,8 @@ public class InputManager : MonoSingleton<InputManager>
     {
         _playerInput.CurrentInput = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
         _playerInput.IsSelecting = Input.GetButtonDown("Select");
+
+        _playerInput.FloatValue = -Input.GetAxis("FloatDown") + Input.GetAxis("FloatUp");
+        //Debug.Log("Float Value: " + _playerInput.FloatValue);
     }
 }

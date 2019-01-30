@@ -10,9 +10,11 @@ public class RoomController : MonoBehaviour
     // enum for room type 
     // lights on when they enter 
 
-    public enum RoomType { LIVING_ROOM = 0, KITCHEN, BEDROOM };
-
+    public enum RoomType { LIVING_ROOM = 0, KITCHEN, BEDROOM, HALLWAY, BATHROOM, ATTIC };
+    
     [SerializeField] List<GameObject> waypoints = new List<GameObject>();
+    [SerializeField] List<GameObject> startpoints = new List<GameObject>();
+    [SerializeField] List<GameObject> endpoints = new List<GameObject>();
     [SerializeField] Light roomLight;
     [SerializeField] GameObject roomTrigger;
     [SerializeField] RoomType roomType;
@@ -21,43 +23,6 @@ public class RoomController : MonoBehaviour
 
     private int occupantCounter = 0;
 
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (occupantCounter <= 0) {
-            ToggleLight(false);
-        }
-        else {
-            ToggleLight(true);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        if (other.tag == "NPC") {
-            occupantCounter++;
-        }
-    }
-
-    private void OnTriggerExit(Collider other) {
-        if (other.tag == "NPC") {
-            occupantCounter--;
-        }
-    }
-
-    void ToggleLight(bool isOn) {
-        if (isOn) {
-            // Turn on the light
-            roomLight.intensity = maxLightIntensity;
-        } else {
-            // Turn off the light 
-            roomLight.intensity = 0;
-        }
-    }
 
     public RoomType GetRoomType(){
         return roomType;
@@ -65,5 +30,15 @@ public class RoomController : MonoBehaviour
 
     public List<GameObject> GetWaypoints() {
         return waypoints;
+    }
+
+    public List<GameObject> GetStartpoints ()
+    {
+        return startpoints;
+    }
+
+    public List<GameObject> GetEndPoints ()
+    {
+        return endpoints;
     }
 }
