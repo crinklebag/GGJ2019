@@ -125,7 +125,7 @@ public class DefaultEntity : Entity
     {
         if (!isSelecting || !canInteract || _interactEntity == null) return null;
 
-        Debug.Log("Handle Select Player Entity");
+        //Debug.Log("Handle Select Player Entity");
         canInteract = false;
         return _interactEntity;
     }
@@ -142,7 +142,7 @@ public class DefaultEntity : Entity
 
         if (!_inUse) return;
 
-        Debug.Log("Can Posses");
+        //Debug.Log("Can Posses");
         canInteract = true;
         _interactEntity = col.transform.GetComponent<Entity>();
     }
@@ -153,7 +153,7 @@ public class DefaultEntity : Entity
 
         if (!_inUse) return;
 
-        Debug.Log("Can't Posses");
+        //Debug.Log("Can't Posses");
         canInteract = false;
         _interactEntity = null;
     }

@@ -61,7 +61,7 @@ public class FlickeringTv : Entity
     {
         yield return new WaitForSeconds(0.1f);
 
-        Debug.Log("Start Flicker");
+        //Debug.Log("Start Flicker");
 
         var x = Mathf.Abs(input.x);
         var z = Mathf.Abs(input.z);
