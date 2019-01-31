@@ -7,37 +7,65 @@ public class MenuManager : MonoSingleton<MenuManager>
 {
     [Header("UI Components")]
     [SerializeField] private RectTransform _openTransform = null;
+    [SerializeField] private RectTransform _hauntTransform = null;
     [SerializeField] private TextMeshProUGUI _startText = null;
+    [SerializeField] private MenuGhost _ghost;
 
     [Header("Title Values")]
     [SerializeField] private List<RectTransform> _openTransformPositions; // 0 = On Screen, 1 = Off screen
     [Range(0.1f, 5.0f)] [SerializeField] private float _openMoveTime = 1.0f;
+    [Range(0.1f, 5.0f)] [SerializeField] private float _hauntScaleTime = 1.0f;
     
     [Header("Start Text Values")]
-    [Range(0.5f, 5.0f)] [SerializeField] private float _characterRevealTime = 1.0f;
+    [Range(0.1f, 5.0f)] [SerializeField] private float _characterRevealTime = 1.0f;
     [SerializeField] private AnimationCurve _startTextYOffsetCurve = null;
     [Range(0.5f, 5.0f)] [SerializeField] private float _startTextYOffSetScale = 1.0f;
     [Range(1.0f, 10.0f)][SerializeField] private float _startTextMoveSpeed = 1.0f;
     
+    [Header("Ghost Values")]
+    [Range(0.0f, 3.0f)][SerializeField] private float _ghostStartDelay = 0.25f;
 
     // Coroutines
     private IEnumerator _startTextShakeRoutine = null;
+
+    // Count
+    private int numChars;
 
 
 
     public static IEnumerator OpenMenu()
     {
-        //
-        
+        // Set Values
+        Instance.numChars = Instance._startText.textInfo.characterCount;
+        Instance._startText.maxVisibleCharacters = 0;
+        Instance._openTransform.anchoredPosition = Instance._openTransformPositions[1].anchoredPosition;
+        Instance._hauntTransform.localScale = Vector3.zero;
 
         // Display Title
-        yield return Instance.StartCoroutine(Instance.RevealTitle());
+        Instance.StartCoroutine(Instance.RevealTitle());
+
+        yield return new WaitForSeconds(Instance._ghostStartDelay);
 
         // Move Ghost
+        Instance._ghost.StartMenuRoutine();
 
+        yield return null;
+    }
+
+    public static IEnumerator RevealStartText()
+    {
         // Display Start Text
-        Instance.StartCoroutine(Instance.RevealStartText());
+        var delay = Instance._characterRevealTime / Instance.numChars;
 
+        for (int i = 0; i < Instance.numChars + 1; i++)
+        {
+            Instance._startText.maxVisibleCharacters = i;
+            yield return new WaitForSeconds(delay);
+        }
+
+        Instance._startText.renderMode = TextRenderFlags.DontRender;
+
+        // Shake start text
         Instance._startTextShakeRoutine = Instance.ShakeStartText();
         Instance.StartCoroutine(Instance._startTextShakeRoutine);
 
@@ -46,8 +74,6 @@ public class MenuManager : MonoSingleton<MenuManager>
 
     private IEnumerator RevealTitle()
     {
-        _openTransform.anchoredPosition = _openTransformPositions[1].anchoredPosition;
-
         // Move in open image
         var dist = Vector2.Distance(_openTransformPositions[1].anchoredPosition, _openTransformPositions[0].anchoredPosition);
         var speed = dist / _openMoveTime;
@@ -65,33 +91,25 @@ public class MenuManager : MonoSingleton<MenuManager>
         _openTransform.anchoredPosition = _openTransformPositions[0].anchoredPosition;
 
         // Fade in haunt image.. or something
+        elapsedTime = 0.0f;
 
-        yield return null;
-    }
-
-    private IEnumerator RevealStartText()
-    {
-        var numChars = _startText.textInfo.characterCount;
-        var delay = _characterRevealTime / numChars;
-
-        for (int i = 0; i < numChars + 1; i++)
+        while (elapsedTime < _hauntScaleTime)
         {
-            _startText.maxVisibleCharacters = i;
-            yield return new WaitForSeconds(delay);
+            _hauntTransform.localScale = Vector2.Lerp(Vector2.zero, Vector2.one, Mathf.SmoothStep(0.0f, 1.0f, elapsedTime / _hauntScaleTime));
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
         }
+
+        _hauntTransform.localScale = Vector2.one;
 
         yield return null;
     }
 
     private IEnumerator ShakeStartText()
     {
-        
-        Instance._startText.renderMode = TextRenderFlags.DontRender;
-
-        Matrix4x4 matrix;
         Vector3[] verts;
-
-        var numChars = _startText.textInfo.characterCount;
 
         var times = new float[numChars];
         var endTime = _startTextYOffsetCurve[_startTextYOffsetCurve.length - 1].time;
