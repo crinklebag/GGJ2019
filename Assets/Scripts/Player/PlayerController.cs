@@ -35,7 +35,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
             if (entity != null)
             {
-                Debug.Log("Swap Entity");
+                //Debug.Log("Swap Entity");
 
                 yield return _currentEntity.StartCoroutine(_currentEntity.ExitState());
                 _currentEntity = entity;

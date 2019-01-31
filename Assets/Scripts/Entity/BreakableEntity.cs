@@ -51,11 +51,11 @@ public class BreakableEntity : Entity
 
     protected override Entity HandleSelect(bool isSelecting)
     {
-        Debug.Log("Handle Select Breakable Entity");
+        //Debug.Log("Handle Select Breakable Entity");
 
         if (isSelecting)
         {
-            Debug.Log("Return player");
+            //Debug.Log("Return player");
             _propShatter.ShatterObject();
             return PlayerController.PlayerEntity;
         }
